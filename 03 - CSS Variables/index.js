@@ -1,3 +1,7 @@
+/**
+ * CSS Variables for JavaScript30
+ * author: @forksofpower
+ */
 const inputs = document.querySelectorAll('input')
 
 function handleUpdate() {
