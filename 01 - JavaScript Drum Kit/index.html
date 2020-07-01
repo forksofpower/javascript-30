@@ -57,26 +57,7 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-  window.addEventListener('keydown', (e) => {
-    // e.preventDefault()
-    let pad = getPad(e.keyCode)
-
-    if (!pad) return;
-    // apply styles and play audio
-    let audio = getAudio(e.keyCode)
-    audio.currentTime = 0
-    audio.play()
-  })
-
-  function getPad(keycode) {
-    return document.querySelector(`[data-key='${keycode}']`)
-  }
-
-  function getAudio(keycode) {
-    return document.querySelector(`audio[data-key='${keycode}']`)
-  }
-</script>
+<script src="index.js"></script>
 
 
 
