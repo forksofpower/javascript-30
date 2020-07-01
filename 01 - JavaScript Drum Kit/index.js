@@ -1,3 +1,7 @@
+/**
+ * JS Drum Kit for JavaScript30
+ * author: @forksofpower
+ */
 const keys = document.querySelectorAll('.key')
 
 keys.forEach(key => {
