@@ -31,29 +31,69 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    let born_in_1500s = inventors.filter(x => x.year >= 1500 && x.year <= 1599)
+    console.group(`1. Filter the list of inventors for those who were born in the 1500's`)
+    console.table(born_in_1500s)
+    console.groupEnd()
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-
+    let first_and_last_names = inventors.map(x => x.first + ' ' + x.last)
+    console.group(`2. Give us an array of the inventors first and last names:`)
+    console.table(first_and_last_names)
+    console.groupEnd()
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    let sorted_by_birthdate = inventors.sort((x, y) => {
+      // console.log(x, y)
+      return x.year < y.year
+    }).map(x => x.year)
+    console.group(`3. Sort the inventors by birthdate, oldest to youngest:`)
+    console.table(sorted_by_birthdate)
+    console.groupEnd()
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    let total_years_lived = inventors.reduce((acc, curr) => acc + (curr.passed - curr.year), 0)
+    console.log(`4. How many years did all the inventors live all together?: ${total_years_lived}`)
 
     // 5. Sort the inventors by years lived
-
+    let inventors_by_years_lived = inventors.sort((a, b) => yearsLived(a) >= yearsLived(b))
+    function yearsLived(x) {
+      return x.passed - x.year
+    }
+    console.group('5. Sort the inventors by years lived')
+    console.table(inventors_by_years_lived)
+    console.groupEnd()
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // let category = document.querySelector('.mw-category')
+    // let links = Array.from(category.querySelectorAll('a'))
+    // let with_de = links.map(link => link.text).filter(streetName => streetName.includes('de'))
 
     // 7. sort Exercise
-    // Sort the people alphabetically by last name
-
+    // Sort the people alphabetically by last names
+    const alphabetically = people.sort((prev, next) => {
+      return (prev > next) ? 1 : -1;
+    })
+    console.group('7. Sort the people alphabetically by last names')
+    console.table(alphabetically)
+    console.groupEnd()
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const array_sums = data.reduce((sums, curr) => {
+      if (sums.hasOwnProperty(curr)) {
+        sums[curr]++
+      } else {
+        sums[curr] = 1
+      }
+      return sums
+    }, {})
+    console.group('8. Sum up the instances of each element in the array')
+    console.table(array_sums)
+    console.groupEnd()
   </script>
 </body>
 </html>
